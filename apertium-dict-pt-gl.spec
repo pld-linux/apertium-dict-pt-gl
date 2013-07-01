@@ -2,14 +2,12 @@ Summary:	Portuguese-Galician language pair for Apertium
 Summary(pl.UTF-8):	Para języków portugalski-galicyjski dla Apertium
 %define	lpair	pt-gl
 Name:		apertium-dict-%{lpair}
-Version:	0.9.1
+Version:	0.9.2
 Release:	1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://downloads.sourceforge.net/apertium/apertium-%{lpair}-%{version}.tar.gz
-# Source0-md5:	3629d1967374f76d51ad58de24d65875
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-apertium32.patch
+# Source0-md5:	295abc86f8b3057acf6e17bcc620dff1
 URL:		http://www.apertium.org/
 BuildRequires:	apertium-devel >= 3.2.0
 BuildRequires:	autoconf >= 2.52
@@ -32,8 +30,6 @@ oznaczania części mowy w obu językach.
 
 %prep
 %setup -q -n apertium-%{lpair}-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}

@@ -2,20 +2,18 @@ Summary:	Portuguese-Galician language pair for Apertium
 Summary(pl.UTF-8):	Para języków portugalski-galicyjski dla Apertium
 %define	lpair	pt-gl
 Name:		apertium-dict-%{lpair}
-Version:	0.9.2
-Release:	2
+Version:	0.9.3
+Release:	1
 License:	GPL v2+
 Group:		Applications/Text
-Source0:	http://downloads.sourceforge.net/apertium/apertium-%{lpair}-%{version}.tar.gz
-# Source0-md5:	295abc86f8b3057acf6e17bcc620dff1
-URL:		http://www.apertium.org/
-BuildRequires:	apertium-devel >= 3.2.0
+Source0:	https://github.com/apertium/apertium-%{lpair}/archive/v%{version}/apertium-%{lpair}-%{version}.tar.gz
+# Source0-md5:	92f278d4cdbe3dfb17923e5c6466ebef
+URL:		https://www.apertium.org/
+BuildRequires:	apertium-devel >= 3.7.1
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	libxslt-progs
-BuildRequires:	lttoolbox >= 3.2.0
 BuildRequires:	pkgconfig
-Requires:	apertium >= 3.2.0
+Requires:	apertium >= 3.7.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,13 +40,8 @@ oznaczania części mowy w obu językach.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/apertium/modes
-
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# not needed here (see modes subdir) and contain wrong (builddir) paths
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/apertium/apertium-%{lpair}/*.mode
 
 %clean
 rm -rf $RPM_BUILD_ROOT
